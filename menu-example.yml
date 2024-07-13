@@ -1,0 +1,10 @@
+encantamento-fogo:
+    material: '377:0'
+    slot: 22
+    nome: '&a&lPIROMANIACO &f[0]'
+    lore:
+    - '&7Este encantamento permite'
+    - '&7que o jogador tenha uma'
+    - '&7arder os montros da masmorra'
+    - ''
+    - '&eClique para evoluir'
