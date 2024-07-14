@@ -15,27 +15,11 @@ public class ActionBarUtil {
 
     private static final Map<Player, BukkitTask> PENDING_MESSAGES = new HashMap<>();
 
-    /**
-     * Sends a message to the player's action bar.
-     * <p/>
-     * The message will appear above the player's hot bar for 2 seconds and then fade away over 1 second.
-     *
-     * @param bukkitPlayer the player to send the message to.
-     * @param message the message to send.
-     */
     public static void sendActionBarMessage(@NotNull Player bukkitPlayer, @NotNull String message) {
         sendRawActionBarMessage(bukkitPlayer, "{\"text\": \"" + message + "\"}");
     }
 
-    /**
-     * Sends a raw message (JSON format) to the player's action bar. Note: while the action bar accepts raw messages
-     * it is currently only capable of displaying text.
-     * <p/>
-     * The message will appear above the player's hot bar for 2 seconds and then fade away over 1 second.
-     *
-     * @param bukkitPlayer the player to send the message to.
-     * @param rawMessage the json format message to send.
-     */
+
     public static void sendRawActionBarMessage(@NotNull Player bukkitPlayer, @NotNull String rawMessage) {
         CraftPlayer player = (CraftPlayer) bukkitPlayer;
         IChatBaseComponent chatBaseComponent = ChatSerializer.a(rawMessage);
@@ -43,20 +27,7 @@ public class ActionBarUtil {
         player.getHandle().playerConnection.sendPacket(packetPlayOutChat);
     }
 
-    /**
-     * Sends a message to the player's action bar that lasts for an extended duration.
-     * <p/>
-     * The message will appear above the player's hot bar for the specified duration and fade away during the last
-     * second of the duration.
-     * <p/>
-     * Only one long duration message can be sent at a time per player. If a new message is sent via this message
-     * any previous messages still being displayed will be replaced.
-     *
-     * @param bukkitPlayer the player to send the message to.
-     * @param message the message to send.
-     * @param duration the duration the message should be visible for in seconds.
-     * @param plugin the plugin sending the message.
-     */
+
     public static void sendActionBarMessage(@NotNull final Player bukkitPlayer, @NotNull final String message,
                                             @NotNull final int duration, @NotNull Plugin plugin) {
         cancelPendingMessages(bukkitPlayer);
